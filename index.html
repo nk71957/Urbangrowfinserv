@@ -494,27 +494,27 @@
         <div class="contact-form p-4">
           <h3 class="mb-3">Send Message</h3>
 
-           <form action="https://formsubmit.co/nk71957@gmail.com" method="POST">
+           <form action="https://formsubmit.co/urbangrowfinservpvt@gmail.com" method="POST">
             <div class="row">
               <div class="col-md-6 mb-3">
-                <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
               </div>
 
               <div class="col-md-6 mb-3">
-                <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Your Email" required>
               </div>
             </div>
 
             <div class="mb-3">
-              <input type="number" id="phone" class="form-control" placeholder="Phone number">
+              <input type="number" id="phone" name="phone" class="form-control" placeholder="Phone number">
             </div>
 
             <div class="mb-3">
-              <input type="text" id="subject" class="form-control" placeholder="Subject">
+              <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject">
             </div>
 
             <div class="mb-3">
-              <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
+              <textarea class="form-control" id="message" name="message" rows="4" placeholder="Your Message"></textarea>
             </div>
 
             <!-- Optional hidden field for better delivery -->
@@ -602,7 +602,7 @@
 
         // Reset form
         contactForm.reset();
-        console.log({ name, email, mobile, subject, message });
+        //console.log({ name, email, mobile, subject, message });
      });
     </script>
   </body>
