@@ -40,7 +40,7 @@
         </li>
 
         <li class="nav-item">
-         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#attendanceModal">
+         <a class="nav-link" href="attendance.html">
            Attendance
          </a>
         </li>
@@ -49,46 +49,6 @@
     </div>
   </div>
 </nav>
-
-<div class="modal fade" id="attendanceModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      
-      <div class="modal-header">
-        <h5 class="modal-title">Attendance</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body">
-
-        <form action="https://formsubmit.co/urbangrowfinservpvt@gmail.com" method="POST" enctype="multipart/form-data">
-
-          <!-- Emp ID -->
-          <input type="text" name="EmpID" class="form-control mb-2" placeholder="Enter Employee ID" required>
-
-          <!-- Name -->
-          <input type="text" name="Name" class="form-control mb-2" placeholder="Enter Name" required>
-
-          <!-- Camera -->
-          <video id="video" width="100%" autoplay></video>
-          <canvas id="canvas" style="display:none;"></canvas>
-
-          <button type="button" class="btn btn-primary mt-2" onclick="capturePhoto()">Capture Photo</button>
-
-          <!-- Hidden Photo -->
-          <input type="file" name="attachment" id="photoFile" style="display:none;">
-
-          <!-- Location -->
-          <input type="hidden" name="Location" id="locationData">
-
-          <button type="submit" class="btn btn-success mt-3 w-100">Submit</button>
-
-        </form>
-
-      </div>
-    </div>
-  </div>
-</div>
 
 <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
   <!-- Indicators -->
@@ -650,49 +610,6 @@
         contactForm.reset();
         //console.log({ name, email, mobile, subject, message });
      });
-
-     
-// Start Camera
-const video = document.getElementById('video');
-
-navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
-  .then(stream => {
-    video.srcObject = stream;
-  })
-  .catch(err => {
-    alert("Camera access denied!");
-  });
-
-// Capture Photo
-function capturePhoto() {
-  const canvas = document.getElementById('canvas');
-  const context = canvas.getContext('2d');
-
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
-
-  context.drawImage(video, 0, 0);
-
-  canvas.toBlob(function(blob) {
-    const file = new File([blob], "attendance.png", { type: "image/png" });
-
-    const dataTransfer = new DataTransfer();
-    dataTransfer.items.add(file);
-
-    document.getElementById('photoFile').files = dataTransfer.files;
-
-    alert("Photo Captured!");
-  });
-}
-
-
-// Get Location
-navigator.geolocation.getCurrentPosition(position => {
-  const lat = position.coords.latitude;
-  const lon = position.coords.longitude;
-
-  document.getElementById('locationData').value = `Lat: ${lat}, Lon: ${lon}`;
-});
     </script>
   </body>
 </html>
